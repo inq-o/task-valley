@@ -1,8 +1,8 @@
 'use client'
 
 import { StatusBar } from '@/components/StatusBar'
-import { TaskList } from '@/components/TaskList'
-import { VillageMap } from '@/components/VillageMap'
+import { TaskList } from '@/components/task/TaskList'
+import { VillageMap } from '@/components/village/VillageMap'
 import { useDailyState } from '@/hooks/useDailyState'
 
 export default function Home() {

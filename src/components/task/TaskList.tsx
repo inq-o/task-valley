@@ -1,4 +1,4 @@
-import { TaskItem } from '@/components/TaskItem'
+import { TaskItem } from '@/components/task/TaskItem'
 import type { Task, TaskCategory } from '@/types'
 
 interface TaskListProps {
