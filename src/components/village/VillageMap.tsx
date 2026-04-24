@@ -1,4 +1,4 @@
-import { VillageZone } from '@/components/VillageZone'
+import { VillageZone } from '@/components/village/VillageZone'
 import type { VillageZone as VillageZoneType } from '@/types'
 
 interface VillageMapProps {
