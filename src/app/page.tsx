@@ -30,8 +30,8 @@ export default function Home() {
         <div className="mt-auto pointer-events-auto w-full max-w-md self-center lg:mb-10 lg:mr-10 lg:self-end">
           <aside className="rounded-2xl border border-white/10 bg-black/40 p-4 shadow-2xl backdrop-blur-md sm:p-6">
             <div className="mb-4 border-b border-white/10 pb-3">
-              <p className="text-[10px] uppercase tracking-[0.25em] text-white/50">Daily Slots</p>
-              <h1 className="mt-1 text-xl font-medium text-white/90">오늘의 복구 작업</h1>
+              <h1 className="text-base font-semibold tracking-wide text-white/90">오늘의 복구 작업</h1>
+              <p className="mt-0.5 text-xs text-white/40">완료하면 마을에 불이 켜집니다</p>
             </div>
             <TaskList tasks={tasks} onComplete={completeTask} />
           </aside>

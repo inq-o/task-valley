@@ -8,6 +8,13 @@ export const CATEGORY_LABELS: Record<TaskCategory, string> = {
   rest: '휴식',
 }
 
+export const CATEGORY_ICONS: Record<TaskCategory, string> = {
+  exercise: '⚔️',
+  study: '📖',
+  coding: '⚙️',
+  rest: '🌿',
+}
+
 export const ZONE_LABELS: Record<TaskCategory, string> = {
   exercise: '훈련장',
   study: '도서관',

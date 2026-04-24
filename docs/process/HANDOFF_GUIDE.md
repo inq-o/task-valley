@@ -2,12 +2,11 @@
 
 ## 핵심 규칙
 
-**모든 에이전트는 작업을 끝낼 때, 다음 에이전트가 컨텍스트 없이 바로 이어받을 수 있는 프롬프트를 남겨야 합니다.**
+**모든 에이전트는 작업을 끝낼 때, 다음 에이전트가 바로 이어받을 수 있는 프롬프트를 사용자에게 전달해야 합니다.**
 
-이 프롬프트는 PR 본문의 **"Handoff Prompt For Next Agent"** 섹션에 작성합니다.  
-PR이 없는 경우(계획 문서만 작성한 경우 등)에는 해당 문서 하단 **"## 다음 단계"** 섹션에 작성합니다.
-
-인계 프롬프트 없이 작업을 완료했다고 간주하지 않습니다.
+- 프롬프트는 PR 본문이 아니라 **작업 완료 응답 마지막**에 사용자에게 직접 제공합니다.
+- PR 본문에는 포함하지 않습니다. PR 템플릿은 별도로 유지됩니다.
+- 프롬프트 없이 작업을 완료했다고 간주하지 않습니다.
 
 ---
 
@@ -106,8 +105,8 @@ Next.js + TypeScript + Tailwind CSS로 MVP v0.1을 구현하고 PR을 올려 주
 5. F5~F7: 컴포넌트 구현 (StatusBar, VillageZone, TaskItem)
 6. F8: 메인 레이아웃 (app/page.tsx, 반응형)
 
-PR 본문에는 반드시 .github/PULL_REQUEST_TEMPLATE.md 형식을 따르고,
-"Handoff Prompt For Next Agent" 섹션에 Claude 리뷰 요청 프롬프트를 작성하세요.
+PR 본문은 .github/PULL_REQUEST_TEMPLATE.md 형식을 따르세요.
+작업 완료 후 응답 마지막에 Claude에게 넘길 handoff 프롬프트를 사용자에게 전달하세요.
 
 ## 완료 기준
 - npm run typecheck, lint, build 모두 통과
@@ -116,7 +115,6 @@ PR 본문에는 반드시 .github/PULL_REQUEST_TEMPLATE.md 형식을 따르고,
   - 완료 버튼 클릭 즉시 마을 구역 변화
   - 새로고침 후 상태 유지
 - 데스크톱(1024px)과 모바일(390px) 레이아웃 확인
-- PR 본문 형식 완성 (Handoff Prompt 포함)
 
 ## 하지 말 것
 - 백엔드, 인증, 데이터베이스를 추가하지 마세요
@@ -131,7 +129,7 @@ PR 본문에는 반드시 .github/PULL_REQUEST_TEMPLATE.md 형식을 따르고,
 ### Codex → Claude (리뷰 요청)
 
 Codex가 구현을 완료하고 PR을 올린 후 Claude에게 리뷰를 요청할 때 사용합니다.  
-PR 본문의 "Handoff Prompt For Next Agent" 섹션에 아래 양식을 작성합니다.
+작업 완료 응답 마지막에 사용자에게 아래 프롬프트를 전달합니다.
 
 **양식:**
 
@@ -179,12 +177,12 @@ Antigravity
   │  디자인 산출물 완성 → Codex에게 handoff
   ▼
 Codex
-  │  구현 PR 올림 → PR 본문에 Claude handoff 포함
+  │  구현 PR 올림 → 응답 마지막에 Claude handoff 프롬프트를 사용자에게 전달
   ▼
 Claude
-  │  PR 리뷰 → Approve 시 다음 handoff 작성
+  │  PR 리뷰 → Approve 시 응답 마지막에 다음 handoff 프롬프트를 사용자에게 전달
   ▼
 (반복 또는 다음 마일스톤)
 ```
 
-각 단계에서 handoff 프롬프트가 없으면 다음 에이전트는 작업을 시작할 수 없습니다.
+각 단계에서 handoff 프롬프트는 PR 본문이 아니라 응답 마지막에 사용자에게 직접 전달합니다.

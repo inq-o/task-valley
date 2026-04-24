@@ -23,10 +23,10 @@
   └─ 완료 버튼 클릭
        ├─ 과제 완료 처리 (완료 상태 = true)
        ├─ 해당 카테고리 구역 totalCompletions + 1
-       ├─ 구역 stage 재계산
-       ├─ 마을 전체 레벨 재계산
+       ├─ 구역 progress 재계산 (0~100%)
+       ├─ 마을 전체 회복률 재계산
        ├─ localStorage 저장
-       └─ 마을 구역 즉시 시각 업데이트
+       └─ 마을 구역 즉시 시각 업데이트 (opacity 변화)
 ```
 
 **핵심 감각:** 버튼을 누르는 순간 마을이 바뀐다. 딜레이 없이.
@@ -51,22 +51,37 @@ PRD와 디자인 브리프에 명시되지 않아 구현 전 결정이 필요한
 ### 일일 초기화
 - 앱 로드 시 localStorage의 `lastActiveDate`와 오늘 날짜(`YYYY-MM-DD`)를 비교합니다.
 - 날짜가 다르면 과제 `completed` 플래그만 `false`로 초기화합니다.
-- 마을 구역 `totalCompletions`와 `stage`는 초기화하지 않습니다.
+- 마을 구역 `totalCompletions`와 `progress`는 초기화하지 않습니다.
 
-### 마을 구역 성장 단계
-- 각 구역은 `totalCompletions` 누적값으로 `stage`를 결정합니다.
-- 스테이지는 4단계이며, 한 번 올라간 단계는 내려가지 않습니다.
+### 마을 구역 7일 성장 로직
 
-| totalCompletions | stage | 상태 이름 |
-|-----------------|-------|-----------|
-| 0 | 0 | 버려진 상태 |
-| 1 | 1 | 첫 불빛 |
-| 2 | 2 | 회복 중 |
-| 3 이상 | 3 | 활기 있는 상태 |
+각 구역은 `totalCompletions` 누적값으로 `progress`(0~100)를 계산합니다.  
+7일 연속 완료 시 해당 구역이 100% 회복됩니다.
 
-### 마을 전체 레벨
-- `level = 4개 구역 stage 합계` (0 ~ 12)
-- UI에는 `Lv. {level}` 형태로 표시합니다.
+**계산식:**
+```
+progress = Math.min(Math.round((totalCompletions / 7) * 100), 100)
+```
+
+**진행 예시:**
+
+| totalCompletions | progress | 시각 상태 |
+|-----------------|----------|-----------|
+| 0 | 0% | 완전히 어두움 (opacity 0) |
+| 1 | 14% | 첫 불빛 |
+| 2 | 29% | |
+| 3 | 43% | |
+| 4 | 57% | 절반 넘어서 밝아지는 느낌 |
+| 7 | 100% | 완전히 밝음 (opacity 1) |
+| 7 초과 | 100% | 상한 고정 |
+
+- progress는 한 번 오르면 내려가지 않습니다.
+- `village_lit.png` 오버레이의 `opacity`가 `progress / 100` 값과 직접 연결됩니다.
+
+### 마을 전체 회복률
+- `level = Math.round(4개 구역 progress 평균)` (0 ~ 100)
+- UI에는 `{level}% 회복` 형태로 표시합니다.
+- 4개 구역을 모두 14일 완료하면 100%가 됩니다.
 
 ### 연속 달성일 (streak)
 - 하루에 4개 과제를 모두 완료하면 streak + 1.
@@ -110,12 +125,12 @@ interface Task {
 interface VillageZone {
   category: TaskCategory
   totalCompletions: number
-  stage: 0 | 1 | 2 | 3
+  progress: number   // 0-100, calcProgress(totalCompletions)로 계산
 }
 
 interface VillageState {
   zones: VillageZone[]
-  level: number      // 0-12, 4개 구역 stage 합계
+  level: number      // 0-100, 4개 구역 progress 평균
   streak: number
   lastActiveDate: string  // 'YYYY-MM-DD'
 }
@@ -125,6 +140,8 @@ interface DailyState {
   village: VillageState
 }
 ```
+
+> **변경 이력:** `VillageStage(0|1|2|3)` 타입과 `stage` 필드를 제거하고 연속형 `progress(0-100)`로 교체했습니다. (14일 성장 로직 반영)
 
 ---
 
@@ -151,11 +168,12 @@ app/page.tsx
 
 ```ts
 // lib/village.ts
-// calcStage(totalCompletions): 0|1|2|3
-// calcLevel(zones): number
+// calcProgress(totalCompletions): number   ← calcStage 대체
+// calcLevel(zones): number                 ← 0-100 평균으로 변경
 // applyCompletion(state, category): DailyState
 
 // lib/storage.ts
+// STORAGE_KEY = 'task-valley:v0.1.1:daily-state'  ← 스키마 변경으로 버전 bump
 // loadState(): DailyState | null
 // saveState(state: DailyState): void
 // handleDateReset(state: DailyState, today: string): DailyState
@@ -283,11 +301,13 @@ app/page.tsx
 ### 타입 및 로직
 - [ ] `tsc --noEmit` 통과
 - [ ] `completeTask`가 이미 완료된 과제에 대해 중복 처리하지 않는다
-- [ ] `calcStage`, `calcLevel`, `handleDateReset`이 순수 함수로 분리되어 있다
+- [ ] `calcProgress`, `calcLevel`, `handleDateReset`이 순수 함수로 분리되어 있다
 - [ ] localStorage 접근이 `typeof window !== 'undefined'` 또는 `try/catch`로 방어되어 있다
+- [ ] `calcProgress(7)` === 100, `calcProgress(4)` === 57, `calcProgress(0)` === 0
 
 ### 비주얼
-- [ ] stage 0과 stage 3이 눈에 띄게 다르다
+- [ ] progress 0%일 때 구역이 완전히 어둡고, 100%일 때 완전히 밝다
+- [ ] 과제 완료 직후 해당 구역 opacity가 즉시 올라간다 (딜레이 없음)
 - [ ] 완료된 과제와 미완료 과제가 시각적으로 구분된다
 - [ ] 배경이 어둡고, 마을이 화면의 감정적 중심이다
 - [ ] SaaS 대시보드나 마케팅 랜딩 페이지처럼 보이지 않는다

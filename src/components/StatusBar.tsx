@@ -6,18 +6,20 @@ interface StatusBarProps {
 
 export function StatusBar({ dateLabel, level, streak }: StatusBarProps) {
   return (
-    <header className="grid gap-3 border border-village-border bg-village-panel p-3 text-sm sm:grid-cols-3 sm:items-center sm:p-4">
+    <header className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
       <div>
-        <p className="text-xs uppercase tracking-[0.2em] text-village-text-muted">Today</p>
-        <p className="mt-1 font-medium text-village-text-primary">{dateLabel}</p>
+        <p className="text-[10px] uppercase tracking-[0.2em] text-white/40">오늘</p>
+        <p className="mt-0.5 font-medium text-white/80">{dateLabel}</p>
       </div>
-      <div className="border-village-border sm:border-l sm:pl-4">
-        <p className="text-xs uppercase tracking-[0.2em] text-village-text-muted">Village</p>
-        <p className="mt-1 font-medium text-village-energy-amber">Lv. {level}</p>
+      <div className="h-6 w-px bg-white/10" />
+      <div>
+        <p className="text-[10px] uppercase tracking-[0.2em] text-white/40">마을</p>
+        <p className="mt-0.5 font-medium text-village-energy-amber">{level}% 회복</p>
       </div>
-      <div className="border-village-border sm:border-l sm:pl-4">
-        <p className="text-xs uppercase tracking-[0.2em] text-village-text-muted">Streak</p>
-        <p className="mt-1 font-medium text-village-text-primary">{streak}일 연속</p>
+      <div className="h-6 w-px bg-white/10" />
+      <div>
+        <p className="text-[10px] uppercase tracking-[0.2em] text-white/40">연속</p>
+        <p className="mt-0.5 font-medium text-white/80">{streak}일</p>
       </div>
     </header>
   )
