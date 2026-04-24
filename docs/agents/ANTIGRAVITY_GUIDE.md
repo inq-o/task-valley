@@ -1,52 +1,52 @@
-# Antigravity / Nano Banana Guide
+# Antigravity / Nano Banana 가이드
 
-## Role
+## 역할
 
-You are the designer and visual prototyper for Task Valley.
+당신은 Task Valley의 디자이너이자 비주얼 프로토타이퍼입니다.
 
-Your job is to define a feasible first visual direction: a dark pixel village that becomes warmer when the user completes real-life tasks.
+현실 과제를 완료하면 어두운 도트 마을이 따뜻하게 회복되는 첫 비주얼 방향을 설계합니다.
 
-## Read First
+## 먼저 읽을 문서
 
 - `AGENTS.md`
 - `docs/product/PRD.md`
 - `docs/design/DESIGN_BRIEF.md`
-- GitHub Issue #1: Build Task Valley MVP v0.1
+- GitHub Issue #1: Task Valley MVP v0.1
 
-## First Task
+## 첫 작업
 
-Create the visual direction for MVP v0.1.
+MVP v0.1의 비주얼 방향을 만들어 주세요.
 
-Produce:
+산출물:
 
-- One desktop layout direction
-- One mobile layout direction
-- A compact color palette
-- Four town growth states
-- Visual notes for the four zones
-- Implementation notes for Codex
+- 데스크톱 레이아웃 방향 1개
+- 모바일 레이아웃 방향 1개
+- 간결한 컬러 팔레트
+- 마을 성장 상태 4단계
+- 4개 구역별 비주얼 메모
+- Codex용 구현 메모
 
-## Prompt To Use
+## 사용할 프롬프트
 
 ```text
-You are the designer and visual prototyper for Task Valley.
+당신은 Task Valley의 디자이너이자 비주얼 프로토타이퍼입니다.
 
-Read AGENTS.md, docs/product/PRD.md, docs/design/DESIGN_BRIEF.md, and GitHub Issue #1.
+AGENTS.md, docs/product/PRD.md, docs/design/DESIGN_BRIEF.md, GitHub Issue #1을 읽어 주세요.
 
-Create a feasible MVP visual direction for a Next.js and Tailwind implementation. The first screen should center on a dark pixel village, not a generic todo list. Provide desktop and mobile layout notes, a compact color palette, four town growth states, zone-specific visual ideas for exercise/study/coding/rest, and implementation notes for Codex. Keep the design achievable with CSS blocks or simple generated assets.
+Next.js와 Tailwind로 구현 가능한 MVP 비주얼 방향을 만들어 주세요. 첫 화면은 일반 할 일 목록이 아니라 어두운 도트 마을이 중심이어야 합니다. 데스크톱/모바일 레이아웃 메모, 간결한 컬러 팔레트, 마을 성장 상태 4단계, 운동/공부/코딩/휴식 구역별 비주얼 아이디어, Codex용 구현 메모를 작성해 주세요. CSS 블록 또는 간단한 생성 에셋으로 구현 가능한 수준을 유지해 주세요.
 ```
 
-## Design Constraints
+## 디자인 제약
 
-- The village is the emotional center of the screen.
-- The task list supports the village, not the other way around.
-- Use a pixel-inspired look, but keep it implementable.
-- Prefer clear visual state changes over complex animation.
-- Keep mobile layout simple: village first, tasks below.
+- 마을이 화면의 감정적 중심입니다.
+- 과제 목록은 마을을 보조해야 합니다.
+- 도트 감성을 사용하되 구현 가능성을 지켜야 합니다.
+- 복잡한 애니메이션보다 명확한 상태 변화를 우선합니다.
+- 모바일은 단순하게 구성합니다: 마을 먼저, 과제는 아래.
 
-## Do Not
+## 하지 말 것
 
-- Design a marketing landing page.
-- Require a full game engine.
-- Require a complex sprite pipeline for v0.1.
-- Add features like inventory, character creation, multiplayer, or map exploration.
+- 마케팅 랜딩 페이지를 디자인하지 마세요.
+- 전체 게임 엔진이 필요한 방향으로 설계하지 마세요.
+- v0.1에 복잡한 스프라이트 파이프라인을 요구하지 마세요.
+- 인벤토리, 캐릭터 생성, 멀티플레이, 맵 탐험 같은 기능을 추가하지 마세요.

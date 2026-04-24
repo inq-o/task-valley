@@ -1,56 +1,56 @@
-# Task Valley Design Brief
+# Task Valley 디자인 브리프
 
-## Product Feeling
+## 제품 감성
 
-Task Valley should feel like a quiet pixel RPG town that is slowly recovering because of the user's real effort.
+Task Valley는 사용자의 현실 노력이 쌓이면서 조용한 도트 RPG 마을이 천천히 회복되는 느낌이어야 합니다.
 
-The first screen should not feel like a normal todo app. The village should be the emotional center, and the task controls should support that scene.
+첫 화면은 일반적인 할 일 앱처럼 보이면 안 됩니다. 마을이 감정적 중심이어야 하며, 과제 컨트롤은 그 장면을 보조해야 합니다.
 
-## Visual Direction
+## 비주얼 방향
 
-- Style: pixel-inspired UI
-- Mood at start: dim, quiet, abandoned, low saturation
-- Mood after progress: warmer lights, clearer paths, more color, subtle life
-- Shape language: simple blocks, crisp borders, compact panels
-- Avoid: glossy SaaS dashboard styling, large marketing hero sections, overcomplicated fantasy UI
+- 스타일: 픽셀/도트 감성 UI
+- 시작 분위기: 어둡고 조용하며 버려진 느낌, 낮은 채도
+- 진행 후 분위기: 따뜻한 불빛, 선명한 길, 조금 더 살아난 색감
+- 형태 언어: 단순한 블록, 또렷한 경계, 컴팩트한 패널
+- 피할 것: SaaS 대시보드 느낌, 마케팅 랜딩 페이지, 과도하게 복잡한 판타지 UI
 
-## Layout
+## 레이아웃
 
-- Main focus: pixel village scene
-- Supporting area: today's 4 tasks
-- Status area: date, town level, streak
-- Desktop: village and tasks can sit side by side
-- Mobile: village first, tasks below
+- 중심: 도트 마을 장면
+- 보조 영역: 오늘의 4개 과제
+- 상태 영역: 날짜, 마을 레벨, 연속 달성일
+- 데스크톱: 마을과 과제를 좌우 배치 가능
+- 모바일: 마을 먼저, 과제는 아래 배치
 
-## Town Zones
+## 마을 구역
 
-- Exercise: defense / training yard
-- Study: library / knowledge district
-- Coding: workshop / engineering district
-- Rest: park / shelter district
+- 운동: 방어 구역 / 훈련장
+- 공부: 도서관 / 지식 구역
+- 코딩: 작업장 / 공학 구역
+- 휴식: 공원 / 쉼터 구역
 
-## Growth States
+## 성장 단계
 
-Design at least 4 visual states for v0.1:
+v0.1에서는 최소 4단계 시각 상태를 설계합니다.
 
-1. Abandoned
-2. First light
-3. Recovering
-4. Lively
+1. 버려진 상태
+2. 첫 불빛
+3. 회복 중
+4. 활기 있는 상태
 
-Each state should be feasible with CSS blocks or simple image assets.
+각 상태는 CSS 블록 또는 간단한 이미지 에셋으로 구현 가능해야 합니다.
 
-## Interaction Notes
+## 인터랙션 메모
 
-- Completing a task should create immediate feedback.
-- Feedback can be simple: zone brightens, window lights up, small sparkle, or short pulse.
-- The app should reward completion without overwhelming the user.
+- 과제 완료 시 즉각적인 피드백이 필요합니다.
+- 피드백은 단순해도 됩니다: 구역 밝아짐, 창문 불 켜짐, 작은 반짝임, 짧은 pulse.
+- 앱은 사용자를 압박하기보다 완료감을 가볍게 보상해야 합니다.
 
-## Deliverables From Designer
+## 디자이너 산출물
 
-- One desktop layout proposal
-- One mobile layout proposal
-- Color palette
-- Town zone visual notes
-- Growth state references or generated images
-- Notes for what Codex should implement in v0.1
+- 데스크톱 레이아웃 제안 1개
+- 모바일 레이아웃 제안 1개
+- 컬러 팔레트
+- 마을 구역별 비주얼 메모
+- 성장 단계 참고 이미지 또는 생성 이미지
+- Codex가 v0.1에서 구현해야 할 메모

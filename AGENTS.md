@@ -1,55 +1,55 @@
 # AGENTS.md
 
-## Project
+## 프로젝트
 
-Task Valley is a small self-improvement RPG. Users complete real-life daily tasks to restore a dark pixel village.
+Task Valley는 작은 자기계발 RPG입니다. 사용자는 현실의 일일 과제를 완료해서 어두운 도트 마을을 회복시킵니다.
 
-## Default Stack
+## 기본 기술 스택
 
 - Next.js
 - React
 - TypeScript
 - Tailwind CSS
-- localStorage for v0.1 persistence
-- Prisma + PostgreSQL in a later milestone
+- v0.1 저장 방식은 localStorage
+- 이후 마일스톤에서 Prisma + PostgreSQL 확장
 
-## Agent Roles
+## 에이전트 역할
 
-### Claude Code: Planner and Reviewer
+### Claude Code: 기획자 및 리뷰어
 
-- Owns product clarity, PRD quality, acceptance criteria, and review comments.
-- Should keep the MVP small and prevent scope creep.
-- Should review PRs for state bugs, UX regressions, unclear copy, accessibility issues, and missing tests.
+- 제품 방향, PRD 품질, 인수 조건, 리뷰 코멘트를 담당합니다.
+- MVP 범위를 작고 명확하게 유지해야 합니다.
+- PR 리뷰 시 상태 버그, UX 회귀, 문구 불명확성, 접근성 문제, 테스트 누락을 확인합니다.
 
-### Antigravity / Nano Banana: Designer
+### Antigravity / Nano Banana: 디자이너
 
-- Owns visual direction, layout exploration, pixel village mood, growth states, and onboarding feel.
-- Should produce design artifacts that are feasible for a Next.js and Tailwind implementation.
-- Should avoid designs that require complex custom animation or large asset pipelines in v0.1.
+- 비주얼 방향, 레이아웃 실험, 도트 마을 분위기, 성장 단계, 온보딩 감성을 담당합니다.
+- Next.js와 Tailwind로 구현 가능한 디자인 산출물을 만들어야 합니다.
+- v0.1에서는 복잡한 애니메이션이나 큰 에셋 파이프라인이 필요한 디자인을 피합니다.
 
-### Codex: Builder
+### Codex: 개발자
 
-- Owns implementation, tests, refactoring, and local verification.
-- Should follow the PRD and design brief before adding new behavior.
-- Should keep changes scoped to the current issue.
+- 구현, 테스트, 리팩터링, 로컬 검증을 담당합니다.
+- PRD와 디자인 브리프를 따른 뒤에만 새 동작을 추가합니다.
+- 현재 Issue 범위 안에서만 변경합니다.
 
-## Coding Rules
+## 코딩 규칙
 
-- Prefer small, typed React components.
-- Keep domain logic separate from UI where practical.
-- Use clear TypeScript types for tasks, categories, town state, and daily progress.
-- Do not add a backend, auth, or database in v0.1 unless the issue explicitly asks for it.
-- Do not introduce AI API calls into the product runtime for v0.1.
-- Keep UI responsive on desktop and mobile.
-- Avoid decorative complexity that makes the first version harder to finish.
+- 작고 타입이 명확한 React 컴포넌트를 선호합니다.
+- 가능하면 도메인 로직과 UI를 분리합니다.
+- 과제, 카테고리, 마을 상태, 일일 진행도에는 명확한 TypeScript 타입을 사용합니다.
+- v0.1에서는 백엔드, 인증, 데이터베이스를 추가하지 않습니다.
+- v0.1 제품 런타임에는 AI API 호출을 넣지 않습니다.
+- 데스크톱과 모바일에서 모두 반응형으로 동작해야 합니다.
+- 첫 버전 완성을 어렵게 만드는 장식적 복잡성을 피합니다.
 
-## Verification
+## 검증
 
-Before marking work complete, run the available checks:
+작업 완료 전 가능한 검사를 실행합니다.
 
-- Type check
-- Lint
-- Unit tests, when present
-- Manual browser check for the main daily task flow
+- 타입 체크
+- 린트
+- 테스트가 있으면 단위 테스트
+- 주요 일일 과제 흐름 수동 브라우저 확인
 
-If a check cannot be run, state why in the PR or final handoff.
+검사를 실행할 수 없다면 PR 또는 최종 인계에 이유를 남깁니다.

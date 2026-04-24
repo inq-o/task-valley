@@ -1,69 +1,69 @@
 # Task Valley MVP PRD
 
-## Summary
+## 요약
 
-Task Valley turns daily self-improvement tasks into a small game loop. Completing real-life tasks sends energy to a dark pixel village, gradually restoring its districts over a 7-day first experience.
+Task Valley는 일일 자기계발 과제를 작은 게임 루프로 바꾸는 앱입니다. 사용자가 현실의 과제를 완료하면 어두운 도트 마을에 에너지가 전달되고, 마을이 7일 동안 점진적으로 회복됩니다.
 
-## Target User
+## 타겟 사용자
 
-The first target user is a student, junior developer, or self-improvement user who wants light motivation for exercise, study, coding, and rest without using a heavy productivity system.
+첫 타겟 사용자는 운동, 공부, 코딩, 휴식 습관을 가볍게 관리하고 싶은 학생, 주니어 개발자, 자기계발 사용자입니다. 무거운 생산성 도구보다 감성적인 동기부여를 원하는 사람을 우선합니다.
 
-## MVP Goal
+## MVP 목표
 
-Build a v0.1 web app that proves this core feeling:
+v0.1은 아래 감각을 검증합니다.
 
-> "When I complete my real task, my village visibly becomes warmer and more alive."
+> "내가 현실 과제를 완료하니, 내 마을이 더 따뜻하고 살아 있는 곳으로 변한다."
 
-## Core Loop
+## 핵심 루프
 
-1. User opens the app and sees a dark pixel village.
-2. User sees 4 daily task slots: exercise, study, coding, rest.
-3. User completes one or more tasks.
-4. The matching village zone immediately brightens.
-5. The app saves progress locally.
-6. Returning later shows the current town state.
+1. 사용자가 앱을 열고 어두운 도트 마을을 봅니다.
+2. 사용자는 오늘의 4개 과제 슬롯을 봅니다: 운동, 공부, 코딩, 휴식.
+3. 사용자가 하나 이상의 과제를 완료합니다.
+4. 완료한 카테고리에 해당하는 마을 구역이 즉시 밝아집니다.
+5. 앱은 진행 상태를 로컬에 저장합니다.
+6. 다시 접속하면 현재 마을 상태가 유지됩니다.
 
-## MVP Features
+## MVP 기능
 
-- Four daily task slots:
-  - Exercise
-  - Study
-  - Coding
-  - Rest
-- Each task has:
-  - Category
-  - Title
-  - Target value
-  - Unit
-  - Completed state
-- Completion behavior:
-  - Exercise: manual completion
-  - Study: manual completion in v0.1; timer can be added after core loop works
-  - Coding: manual completion in v0.1; code line detection is deferred
-  - Rest: manual completion in v0.1; timer can be added after core loop works
-- Town state:
-  - Overall level
-  - Energy per category
-  - Current streak
-  - Last active date
-- Persistence:
-  - localStorage only for v0.1
+- 네 개의 일일 과제 슬롯:
+  - 운동
+  - 공부
+  - 코딩
+  - 휴식
+- 각 과제는 다음 값을 가집니다:
+  - 카테고리
+  - 제목
+  - 목표 수치
+  - 단위
+  - 완료 상태
+- v0.1 완료 방식:
+  - 운동: 직접 완료
+  - 공부: 직접 완료
+  - 코딩: 직접 완료
+  - 휴식: 직접 완료
+- 마을 상태:
+  - 전체 레벨
+  - 카테고리별 에너지
+  - 연속 달성일
+  - 마지막 활동 날짜
+- 저장:
+  - v0.1은 localStorage만 사용
 
-## Non-Goals For v0.1
+## v0.1에서 하지 않는 것
 
-- User accounts
-- Cloud sync
-- Database
-- AI API features
-- Code file analysis
-- Full sprite asset pipeline
-- Cross-platform desktop packaging
+- 사용자 계정
+- 클라우드 동기화
+- 데이터베이스
+- AI API 기능
+- 코드 파일 분석
+- 완전한 스프라이트 에셋 파이프라인
+- 데스크톱 앱 패키징
 
-## Acceptance Criteria
+## 인수 조건
 
-- On first load, the user sees a dark village and 4 default tasks.
-- Completing a task updates its completed state immediately.
-- Completing a task visibly changes the matching town zone.
-- Refreshing the page keeps completed tasks and town progress.
-- The app works at common desktop and mobile viewport widths.
-- The implementation uses Next.js, TypeScript, and Tailwind CSS.
+- 첫 실행 시 어두운 마을과 기본 과제 4개가 보입니다.
+- 과제를 완료하면 완료 상태가 즉시 반영됩니다.
+- 과제를 완료하면 해당 마을 구역이 눈에 띄게 변합니다.
+- 새로고침 후에도 완료 상태와 마을 진행도가 유지됩니다.
+- 일반적인 데스크톱 및 모바일 화면 폭에서 UI가 깨지지 않습니다.
+- 구현은 Next.js, TypeScript, Tailwind CSS를 사용합니다.

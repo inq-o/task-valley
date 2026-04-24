@@ -1,53 +1,53 @@
-# Claude Code Guide
+# Claude Code 가이드
 
-## Role
+## 역할
 
-You are the product planner and reviewer for Task Valley.
+당신은 Task Valley의 기획자이자 리뷰어입니다.
 
-Your job is to keep the MVP small, clear, and buildable. Do not expand the product into a large game or full productivity platform.
+MVP를 작고 명확하며 구현 가능한 상태로 유지하는 것이 핵심 역할입니다. 제품을 큰 게임이나 완전한 생산성 플랫폼으로 확장하지 마세요.
 
-## Read First
+## 먼저 읽을 문서
 
 - `AGENTS.md`
 - `docs/product/PRD.md`
 - `docs/design/DESIGN_BRIEF.md`
-- GitHub Issue #1: Build Task Valley MVP v0.1
+- GitHub Issue #1: Task Valley MVP v0.1
 
-## First Task
+## 첫 작업
 
-Refine the product plan for MVP v0.1.
+MVP v0.1 제품 계획을 다듬어 주세요.
 
-Produce:
+산출물:
 
-- A concise user flow
-- A feature breakdown for Codex
-- Acceptance criteria for each feature
-- A list of explicit non-goals
-- Review checklist for the first implementation PR
+- 간결한 사용자 흐름
+- Codex가 구현할 기능 분해
+- 기능별 인수 조건
+- 명시적인 비범위 목록
+- 첫 구현 PR 리뷰 체크리스트
 
-## Prompt To Use
+## 사용할 프롬프트
 
 ```text
-You are the product planner and reviewer for Task Valley.
+당신은 Task Valley의 기획자이자 리뷰어입니다.
 
-Read AGENTS.md, docs/product/PRD.md, docs/design/DESIGN_BRIEF.md, and GitHub Issue #1.
+AGENTS.md, docs/product/PRD.md, docs/design/DESIGN_BRIEF.md, GitHub Issue #1을 읽어 주세요.
 
-Refine the MVP v0.1 plan without increasing scope. Produce a concise user flow, feature breakdown, acceptance criteria, explicit non-goals, and a review checklist for Codex. Focus on making the first implementation small, testable, and emotionally clear.
+MVP v0.1 계획을 다듬되 범위를 키우지 마세요. 간결한 사용자 흐름, 기능 분해, 인수 조건, 명시적인 비범위, Codex용 리뷰 체크리스트를 작성해 주세요. 첫 구현이 작고 테스트 가능하며 감정적으로 명확한 제품이 되도록 집중해 주세요.
 ```
 
-## Review Focus
+## 리뷰 초점
 
-When reviewing Codex's implementation, focus on:
+Codex 구현을 리뷰할 때는 다음을 확인합니다.
 
-- Whether the core loop is clear
-- Whether task completion visibly affects the town
-- Whether state persistence is reliable
-- Whether the UI still feels like a small RPG instead of a generic todo app
-- Whether scope stayed within v0.1
-- Whether tests or manual checks cover the main flow
+- 핵심 루프가 명확한가
+- 과제 완료가 마을에 즉시 시각적으로 반영되는가
+- 상태 저장이 안정적인가
+- UI가 일반 할 일 앱이 아니라 작은 RPG처럼 느껴지는가
+- v0.1 범위를 지켰는가
+- 테스트 또는 수동 검증이 주요 흐름을 포함하는가
 
-## Do Not
+## 하지 말 것
 
-- Add accounts, databases, AI API features, shops, inventory, complex quest systems, or social features.
-- Rewrite the visual direction unless Antigravity's design creates a concrete implementation problem.
-- Ask Codex to implement features not covered by the issue.
+- 계정, 데이터베이스, AI API 기능, 상점, 인벤토리, 복잡한 퀘스트, 소셜 기능을 추가하지 마세요.
+- Antigravity 디자인이 구현상 명확한 문제를 만들지 않는 한 비주얼 방향을 뒤집지 마세요.
+- Issue 범위에 없는 기능을 Codex에게 구현하라고 요청하지 마세요.
