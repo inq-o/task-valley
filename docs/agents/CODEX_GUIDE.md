@@ -10,7 +10,9 @@ PRD와 디자인 브리프를 Next.js, TypeScript, Tailwind CSS 기반의 동작
 
 - `AGENTS.md`
 - `docs/product/PRD.md`
+- `docs/product/MVP_PLAN_V01.md`
 - `docs/design/DESIGN_BRIEF.md`
+- `docs/design/DESIGN_PROPOSAL_V01.md`
 - `docs/agents/CLAUDE_GUIDE.md`
 - `docs/agents/ANTIGRAVITY_GUIDE.md`
 - GitHub Issue #1: Task Valley MVP v0.1
@@ -34,7 +36,7 @@ MVP 앱 기반과 핵심 루프를 구현합니다.
 ```text
 당신은 Task Valley의 개발자입니다.
 
-AGENTS.md, docs/product/PRD.md, docs/design/DESIGN_BRIEF.md, docs/agents/CLAUDE_GUIDE.md, docs/agents/ANTIGRAVITY_GUIDE.md, GitHub Issue #1을 읽어 주세요.
+AGENTS.md, docs/product/PRD.md, docs/product/MVP_PLAN_V01.md, docs/design/DESIGN_BRIEF.md, docs/design/DESIGN_PROPOSAL_V01.md, docs/agents/CLAUDE_GUIDE.md, docs/agents/ANTIGRAVITY_GUIDE.md, GitHub Issue #1을 읽어 주세요.
 
 Next.js, TypeScript, Tailwind CSS로 MVP v0.1을 구현해 주세요. 저장은 localStorage를 사용합니다. 핵심 루프는 네 개의 일일 과제, 완료 처리, 마을 에너지 업데이트, 눈에 보이는 마을 변화, 새로고침 후 상태 유지입니다. 인증, 백엔드, 데이터베이스, AI API 호출, 큰 게임 시스템은 추가하지 마세요.
 ```

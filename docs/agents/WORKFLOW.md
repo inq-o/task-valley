@@ -21,7 +21,9 @@ GitHub Issue #1과 아래 저장소 문서를 기준으로 사용합니다.
 
 - `AGENTS.md`
 - `docs/product/PRD.md`
+- `docs/product/MVP_PLAN_V01.md`
 - `docs/design/DESIGN_BRIEF.md`
+- `docs/design/DESIGN_PROPOSAL_V01.md`
 - `docs/agents/CLAUDE_GUIDE.md`
 - `docs/agents/ANTIGRAVITY_GUIDE.md`
 - `docs/agents/CODEX_GUIDE.md`
