@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-noto)', 'system-ui', 'sans-serif'],
+      },
       colors: {
         village: {
           bg: '#0f0f1a',
@@ -20,14 +23,11 @@ const config: Config = {
           },
           energy: {
             amber: '#f59e0b',
-            stage1: '#2a2a3d',
-            stage2: '#3d3020',
-            stage3: '#5c4a1e',
           },
         },
       },
       boxShadow: {
-        glow: '0 0 15px rgba(245, 158, 11, 0.2)',
+        glow: '0 0 20px rgba(245, 158, 11, 0.25)',
       },
     },
   },

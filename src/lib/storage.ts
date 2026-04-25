@@ -1,7 +1,7 @@
 import type { DailyState } from '@/types'
 import { createInitialState } from '@/lib/defaults'
 
-const STORAGE_KEY = 'task-valley:v0.1:daily-state'
+const STORAGE_KEY = 'task-valley:v0.1.1:daily-state'
 
 function canUseStorage(): boolean {
   return typeof window !== 'undefined' && typeof window.localStorage !== 'undefined'
@@ -19,7 +19,9 @@ export function loadState(): DailyState | null {
       return null
     }
 
-    return JSON.parse(rawState) as DailyState
+    const parsed = JSON.parse(rawState) as DailyState
+    if (!parsed.tasks || !parsed.village?.zones) return null
+    return parsed
   } catch {
     return null
   }

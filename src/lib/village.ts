@@ -1,51 +1,31 @@
-import type { DailyState, TaskCategory, VillageStage, VillageZone } from '@/types'
+import type { DailyState, TaskCategory, VillageZone } from '@/types'
 
-export function calcStage(totalCompletions: number): VillageStage {
-  if (totalCompletions >= 3) {
-    return 3
-  }
+const DAYS_TO_FULL = 7
 
-  if (totalCompletions >= 2) {
-    return 2
-  }
-
-  if (totalCompletions >= 1) {
-    return 1
-  }
-
-  return 0
+export function calcProgress(totalCompletions: number): number {
+  return Math.min(Math.round((totalCompletions / DAYS_TO_FULL) * 100), 100)
 }
 
 export function calcLevel(zones: VillageZone[]): number {
-  return zones.reduce((total, zone) => total + zone.stage, 0)
+  if (zones.length === 0) return 0
+  return Math.round(zones.reduce((sum, z) => sum + z.progress, 0) / zones.length)
 }
 
 export function applyCompletion(state: DailyState, category: TaskCategory): DailyState {
-  const task = state.tasks.find((item) => item.id === category)
+  const task = state.tasks.find((t) => t.id === category)
+  if (!task || task.completed) return state
 
-  if (!task || task.completed) {
-    return state
-  }
-
-  const tasks = state.tasks.map((item) =>
-    item.id === category ? { ...item, completed: true } : item,
+  const tasks = state.tasks.map((t) =>
+    t.id === category ? { ...t, completed: true } : t,
   )
 
-  const zones = state.village.zones.map((zone) => {
-    if (zone.category !== category) {
-      return zone
-    }
-
-    const totalCompletions = zone.totalCompletions + 1
-
-    return {
-      ...zone,
-      totalCompletions,
-      stage: calcStage(totalCompletions),
-    }
+  const zones = state.village.zones.map((z) => {
+    if (z.category !== category) return z
+    const totalCompletions = z.totalCompletions + 1
+    return { ...z, totalCompletions, progress: calcProgress(totalCompletions) }
   })
 
-  const allTasksCompleted = tasks.every((item) => item.completed)
+  const allDone = tasks.every((t) => t.completed)
 
   return {
     tasks,
@@ -53,7 +33,7 @@ export function applyCompletion(state: DailyState, category: TaskCategory): Dail
       ...state.village,
       zones,
       level: calcLevel(zones),
-      streak: allTasksCompleted ? state.village.streak + 1 : state.village.streak,
+      streak: allDone ? state.village.streak + 1 : state.village.streak,
     },
   }
 }
