@@ -24,7 +24,7 @@ export default function Home() {
 
       {/* 왼쪽: 마을 패널 */}
       <div className="h-[45vh] shrink-0 p-3 lg:h-full lg:flex-1 lg:p-4">
-        <VillagePanel zones={village.zones} level={village.level} />
+        <VillagePanel zones={village.zones} level={village.level} allDone={allDone} />
       </div>
 
       {/* 오른쪽: 과제 패널 */}
