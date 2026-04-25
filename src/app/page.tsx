@@ -2,6 +2,7 @@
 
 import { CharacterPanel } from '@/components/character/CharacterPanel'
 import { TaskList } from '@/components/task/TaskList'
+import { VillageMap } from '@/components/village/VillageMap'
 import { useDailyState } from '@/hooks/useDailyState'
 import { formatKoreanDate } from '@/lib/date'
 
@@ -27,9 +28,9 @@ export default function Home() {
         <CharacterPanel village={village} tasks={tasks} allDone={allDone} />
       </div>
 
-      {/* 오른쪽: 퀘스트 패널 */}
-      <div className="flex min-w-0 flex-1 flex-col overflow-y-auto p-3 lg:p-4">
-        <div className="flex h-full flex-col rounded-2xl bg-[#0e0e1a] ring-1 ring-white/5">
+      {/* 오른쪽: 퀘스트 패널 + 마을 */}
+      <div className="flex min-w-0 flex-1 flex-col gap-3 overflow-y-auto p-3 lg:gap-4 lg:p-4">
+        <div className="flex flex-col rounded-2xl bg-[#0e0e1a] ring-1 ring-white/5">
 
           {/* 헤더 */}
           <div className="border-b border-white/5 px-5 py-4">
@@ -61,6 +62,10 @@ export default function Home() {
           </div>
 
         </div>
+
+        {/* 마을 픽셀아트 맵 */}
+        <VillageMap village={village} />
+
       </div>
 
     </div>

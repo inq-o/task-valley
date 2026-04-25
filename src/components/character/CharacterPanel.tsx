@@ -35,6 +35,7 @@ export function CharacterPanel({ village, tasks, allDone }: Props) {
           ? 'bg-[#0e0a04] ring-amber-400/30'
           : 'bg-[#0a0a14] ring-white/8'
       }`}
+      style={allDone ? { boxShadow: '0 0 20px rgba(245,158,11,0.15)' } : undefined}
     >
       {/* 캐릭터 헤더 */}
       <div className="mb-6">
