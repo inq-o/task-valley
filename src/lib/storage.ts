@@ -1,7 +1,7 @@
 import type { DailyState } from '@/types'
 import { createInitialState } from '@/lib/defaults'
 
-const STORAGE_KEY = 'task-valley:v0.1.1:daily-state'
+const STORAGE_KEY = 'task-valley:v0.2.0:daily-state'
 
 function canUseStorage(): boolean {
   return typeof window !== 'undefined' && typeof window.localStorage !== 'undefined'

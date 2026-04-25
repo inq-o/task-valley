@@ -22,6 +22,13 @@ export const ZONE_LABELS: Record<TaskCategory, string> = {
   rest: '공원',
 }
 
+export const STAT_NAMES: Record<TaskCategory, string> = {
+  exercise: 'STR',
+  study: 'INT',
+  coding: 'DEX',
+  rest: 'VIT',
+}
+
 const DEFAULT_TASKS: Task[] = [
   { id: 'exercise', title: '오늘의 운동', targetValue: 30, unit: '분', completed: false },
   { id: 'study', title: '오늘의 공부', targetValue: 1, unit: '시간', completed: false },

@@ -7,8 +7,7 @@ export function calcProgress(totalCompletions: number): number {
 }
 
 export function calcLevel(zones: VillageZone[]): number {
-  if (zones.length === 0) return 0
-  return Math.round(zones.reduce((sum, z) => sum + z.progress, 0) / zones.length)
+  return zones.reduce((sum, z) => sum + z.totalCompletions, 0)
 }
 
 export function applyCompletion(state: DailyState, category: TaskCategory): DailyState {
