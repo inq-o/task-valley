@@ -26,7 +26,7 @@ export const STAT_NAMES: Record<TaskCategory, string> = {
   exercise: 'STR',
   study: 'INT',
   coding: 'DEX',
-  rest: 'VIT',
+  rest: 'LUK',
 }
 
 const DEFAULT_TASKS: Task[] = [
