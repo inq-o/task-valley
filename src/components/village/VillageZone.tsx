@@ -14,8 +14,8 @@ const zoneMaskPositions: Record<TaskCategory, string> = {
 
 const stageOpacityValue: Record<VillageStage, number> = {
   0: 0,
-  1: 0.4,
-  2: 0.7,
+  1: 0.6,
+  2: 0.85,
   3: 1,
 }
 
@@ -29,6 +29,7 @@ export function VillageZone({ zone }: VillageZoneProps) {
       className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
       style={{
         opacity,
+        mixBlendMode: 'screen',
         WebkitMaskImage: maskImage,
         maskImage,
       }}
