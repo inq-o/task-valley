@@ -1,7 +1,5 @@
 export type TaskCategory = 'exercise' | 'study' | 'coding' | 'rest'
 
-export type VillageStage = 0 | 1 | 2 | 3
-
 export interface Task {
   id: TaskCategory
   title: string
@@ -13,14 +11,14 @@ export interface Task {
 export interface VillageZone {
   category: TaskCategory
   totalCompletions: number
-  stage: VillageStage
+  progress: number // 0-100
 }
 
 export interface VillageState {
   zones: VillageZone[]
-  level: number
+  level: number // 0-100, average of zone progress
   streak: number
-  lastActiveDate: string
+  lastActiveDate: string // YYYY-MM-DD
 }
 
 export interface DailyState {

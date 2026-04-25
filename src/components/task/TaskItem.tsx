@@ -1,4 +1,4 @@
-import { CATEGORY_LABELS } from '@/lib/defaults'
+import { CATEGORY_ICONS, CATEGORY_LABELS } from '@/lib/defaults'
 import type { Task, TaskCategory } from '@/types'
 
 interface TaskItemProps {
@@ -9,42 +9,45 @@ interface TaskItemProps {
 export function TaskItem({ task, onComplete }: TaskItemProps) {
   return (
     <article
-      className={`border bg-village-surface/70 p-4 transition-colors duration-300 ${
+      className={`flex items-center gap-3 rounded-lg px-3 py-3 transition-all duration-200 ${
         task.completed
-          ? 'border-village-energy-amber opacity-60'
-          : 'border-village-border hover:border-village-text-muted'
+          ? 'opacity-50'
+          : 'hover:bg-white/5 cursor-pointer'
       }`}
+      onClick={() => !task.completed && onComplete(task.id)}
     >
-      <div className="flex items-start justify-between gap-3">
-        <div className="min-w-0">
-          <p className="text-xs uppercase tracking-[0.18em] text-village-text-muted">
-            {CATEGORY_LABELS[task.id]}
-          </p>
-          <h2
-            className={`mt-1 text-lg font-semibold ${
-              task.completed ? 'text-village-text-muted line-through' : 'text-village-text-primary'
-            }`}
-          >
-            {task.title}
-          </h2>
-          <p className="mt-2 text-sm text-village-text-muted">
-            목표 {task.targetValue}
-            {task.unit}
-          </p>
-        </div>
-        <button
-          className={`min-h-11 shrink-0 border px-4 text-sm font-semibold transition-colors ${
-            task.completed
-              ? 'cursor-not-allowed border-village-energy-amber text-village-energy-amber'
-              : 'border-village-border bg-village-border text-village-text-primary hover:border-village-energy-amber hover:text-village-energy-amber'
+      <span className="text-xl leading-none shrink-0" aria-hidden="true">
+        {CATEGORY_ICONS[task.id]}
+      </span>
+
+      <div className="min-w-0 flex-1">
+        <p className="text-[10px] font-medium uppercase tracking-widest text-white/40">
+          {CATEGORY_LABELS[task.id]}
+        </p>
+        <p
+          className={`mt-0.5 text-sm font-medium leading-snug ${
+            task.completed ? 'line-through text-white/30' : 'text-white/90'
           }`}
-          type="button"
-          disabled={task.completed}
-          onClick={() => onComplete(task.id)}
         >
-          {task.completed ? '완료' : '불 켜기'}
-        </button>
+          {task.title}
+        </p>
+        <p className="mt-0.5 text-xs text-white/30">
+          목표 {task.targetValue}{task.unit}
+        </p>
       </div>
+
+      <button
+        type="button"
+        disabled={task.completed}
+        onClick={() => onComplete(task.id)}
+        className={`shrink-0 min-h-[44px] min-w-[72px] rounded-md border px-3 text-xs font-semibold transition-all duration-200 ${
+          task.completed
+            ? 'cursor-not-allowed border-amber-500/20 text-amber-500/40'
+            : 'border-white/20 bg-white/5 text-white/70 hover:border-amber-400/60 hover:bg-amber-400/10 hover:text-amber-300 active:scale-95'
+        }`}
+      >
+        {task.completed ? '✓ 완료' : '불 켜기'}
+      </button>
     </article>
   )
 }

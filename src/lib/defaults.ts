@@ -1,11 +1,18 @@
 import type { DailyState, Task, TaskCategory, VillageZone } from '@/types'
-import { calcLevel, calcStage } from '@/lib/village'
+import { calcLevel, calcProgress } from '@/lib/village'
 
 export const CATEGORY_LABELS: Record<TaskCategory, string> = {
   exercise: '운동',
   study: '공부',
   coding: '코딩',
   rest: '휴식',
+}
+
+export const CATEGORY_ICONS: Record<TaskCategory, string> = {
+  exercise: '⚔️',
+  study: '📖',
+  coding: '⚙️',
+  rest: '🌿',
 }
 
 export const ZONE_LABELS: Record<TaskCategory, string> = {
@@ -15,59 +22,25 @@ export const ZONE_LABELS: Record<TaskCategory, string> = {
   rest: '공원',
 }
 
-export const DEFAULT_TASKS: Task[] = [
-  {
-    id: 'exercise',
-    title: '오늘의 운동',
-    targetValue: 30,
-    unit: '분',
-    completed: false,
-  },
-  {
-    id: 'study',
-    title: '오늘의 공부',
-    targetValue: 1,
-    unit: '시간',
-    completed: false,
-  },
-  {
-    id: 'coding',
-    title: '오늘의 코딩',
-    targetValue: 1,
-    unit: '커밋',
-    completed: false,
-  },
-  {
-    id: 'rest',
-    title: '오늘의 휴식',
-    targetValue: 30,
-    unit: '분',
-    completed: false,
-  },
+const DEFAULT_TASKS: Task[] = [
+  { id: 'exercise', title: '오늘의 운동', targetValue: 30, unit: '분', completed: false },
+  { id: 'study', title: '오늘의 공부', targetValue: 1, unit: '시간', completed: false },
+  { id: 'coding', title: '오늘의 코딩', targetValue: 1, unit: '커밋', completed: false },
+  { id: 'rest', title: '오늘의 휴식', targetValue: 30, unit: '분', completed: false },
 ]
 
-export function createDefaultTasks(): Task[] {
-  return DEFAULT_TASKS.map((task) => ({ ...task, completed: false }))
-}
-
-export function createDefaultZones(): VillageZone[] {
-  return DEFAULT_TASKS.map((task) => ({
-    category: task.id,
+function makeDefaultZones(): VillageZone[] {
+  return DEFAULT_TASKS.map((t) => ({
+    category: t.id,
     totalCompletions: 0,
-    stage: calcStage(0),
+    progress: calcProgress(0),
   }))
 }
 
 export function createInitialState(today: string): DailyState {
-  const zones = createDefaultZones()
-
+  const zones = makeDefaultZones()
   return {
-    tasks: createDefaultTasks(),
-    village: {
-      zones,
-      level: calcLevel(zones),
-      streak: 0,
-      lastActiveDate: today,
-    },
+    tasks: DEFAULT_TASKS.map((t) => ({ ...t })),
+    village: { zones, level: calcLevel(zones), streak: 0, lastActiveDate: today },
   }
 }
