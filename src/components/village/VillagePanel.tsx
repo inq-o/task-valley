@@ -1,10 +1,17 @@
 import { VillageZoneCard } from '@/components/village/VillageZoneCard'
-import type { VillageZone } from '@/types'
+import type { TaskCategory, VillageZone } from '@/types'
 import Image from 'next/image'
 
 interface Props {
   zones: VillageZone[]
   level: number
+}
+
+const maskPositions: Record<TaskCategory, string> = {
+  exercise: '22% 28%',
+  study:    '72% 22%',
+  coding:   '25% 72%',
+  rest:     '74% 74%',
 }
 
 export function VillagePanel({ zones, level }: Props) {
@@ -18,6 +25,28 @@ export function VillagePanel({ zones, level }: Props) {
         className="object-cover object-center"
         priority
       />
+
+      {/* 구역별 screen blend 조명 */}
+      {zones.map((zone) => {
+        if (zone.progress === 0) return null
+        const pos = maskPositions[zone.category]
+        const mask = `radial-gradient(ellipse 58% 58% at ${pos}, black 20%, transparent 72%)`
+        return (
+          <div
+            key={zone.category}
+            className="absolute inset-0 transition-opacity duration-700 ease-in-out"
+            style={{
+              opacity: zone.progress / 100,
+              mixBlendMode: 'screen',
+              WebkitMaskImage: mask,
+              maskImage: mask,
+            }}
+            aria-hidden="true"
+          >
+            <Image src="/village_lit.png" alt="" fill className="object-cover object-center" />
+          </div>
+        )
+      })}
 
       {/* 어두운 그라디언트 오버레이 — 카드 가독성 향상 */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/40" />
