@@ -5,27 +5,33 @@ interface VillageZoneProps {
   zone: VillageZoneType
 }
 
-const categoryClipPaths: Record<TaskCategory, string> = {
-  exercise: 'polygon(0 0, 50% 0, 50% 50%, 0 50%)',
-  study: 'polygon(50% 0, 100% 0, 100% 50%, 50% 50%)',
-  coding: 'polygon(0 50%, 50% 50%, 50% 100%, 0 100%)',
-  rest: 'polygon(50% 50%, 100% 50%, 100% 100%, 50% 100%)',
+const zoneMaskPositions: Record<TaskCategory, string> = {
+  exercise: '22% 28%',
+  study: '72% 22%',
+  coding: '25% 72%',
+  rest: '74% 74%',
 }
 
-const stageOpacity: Record<VillageStage, string> = {
-  0: 'opacity-0',
-  1: 'opacity-30',
-  2: 'opacity-60',
-  3: 'opacity-100',
+const stageOpacityValue: Record<VillageStage, number> = {
+  0: 0,
+  1: 0.4,
+  2: 0.7,
+  3: 1,
 }
 
 export function VillageZone({ zone }: VillageZoneProps) {
-  const opacityClass = stageOpacity[zone.stage] || 'opacity-0'
+  const maskPos = zoneMaskPositions[zone.category]
+  const opacity = stageOpacityValue[zone.stage]
+  const maskImage = `radial-gradient(ellipse 55% 55% at ${maskPos}, black 25%, transparent 70%)`
 
   return (
     <div
-      className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${opacityClass}`}
-      style={{ clipPath: categoryClipPaths[zone.category] }}
+      className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+      style={{
+        opacity,
+        WebkitMaskImage: maskImage,
+        maskImage,
+      }}
       aria-hidden="true"
     >
       <Image
