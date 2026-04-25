@@ -14,6 +14,7 @@ export function TaskItem({ task, onComplete }: TaskItemProps) {
           ? 'opacity-50'
           : 'hover:bg-white/5 cursor-pointer'
       }`}
+      onClick={() => !task.completed && onComplete(task.id)}
     >
       <span className="text-xl leading-none shrink-0" aria-hidden="true">
         {CATEGORY_ICONS[task.id]}
